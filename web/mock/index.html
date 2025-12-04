@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N高マッチング - Mock</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- ログイン画面 -->
+        <div id="login-screen" class="screen">
+            <div class="login-container">
+                <h1>N高マッチング</h1>
+                <p>友達を見つけよう</p>
+                <button onclick="login()" class="btn-primary">Googleでログイン</button>
+            </div>
+        </div>
+
+        <!-- メイン画面 -->
+        <div id="main-screen" class="screen hidden">
+            <!-- ナビゲーション -->
+            <nav class="bottom-nav">
+                <button onclick="showTab('discover')" class="nav-item active" data-tab="discover">
+                    <span>👤</span>
+                    <span>発見</span>
+                </button>
+                <button onclick="showTab('likes')" class="nav-item" data-tab="likes">
+                    <span>❤️</span>
+                    <span>いいね</span>
+                    <span class="badge" id="likes-badge">2</span>
+                </button>
+                <button onclick="showTab('matches')" class="nav-item" data-tab="matches">
+                    <span>💬</span>
+                    <span>マッチ</span>
+                </button>
+                <button onclick="showTab('profile')" class="nav-item" data-tab="profile">
+                    <span>⚙️</span>
+                    <span>設定</span>
+                </button>
+            </nav>
+
+            <!-- 発見タブ -->
+            <div id="discover-tab" class="tab-content">
+                <div class="header">
+                    <h2>ユーザーを探す</h2>
+                </div>
+                <div id="user-cards" class="user-cards"></div>
+            </div>
+
+            <!-- いいねタブ -->
+            <div id="likes-tab" class="tab-content hidden">
+                <div class="header">
+                    <h2>受け取ったいいね</h2>
+                </div>
+                <div id="likes-list" class="likes-list"></div>
+            </div>
+
+            <!-- マッチタブ -->
+            <div id="matches-tab" class="tab-content hidden">
+                <div class="header">
+                    <h2>マッチング</h2>
+                </div>
+                <div id="matches-list" class="matches-list"></div>
+            </div>
+
+            <!-- プロフィールタブ -->
+            <div id="profile-tab" class="tab-content hidden">
+                <div class="header">
+                    <h2>プロフィール</h2>
+                </div>
+                <div class="profile-view">
+                    <div class="profile-photo">
+                        <img src="https://via.placeholder.com/150" alt="プロフィール写真">
+                    </div>
+                    <h3>タロウ</h3>
+                    <p class="grade">1年生 - プログラミングコース</p>
+                    <div class="interests">
+                        <span class="tag">プログラミング</span>
+                        <span class="tag">ゲーム</span>
+                        <span class="tag">アニメ</span>
+                    </div>
+                    <p class="bio">プログラミング勉強中です！同じ趣味の友達が欲しいです。</p>
+                    <button onclick="logout()" class="btn-secondary">ログアウト</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- チャット画面 -->
+        <div id="chat-screen" class="screen hidden">
+            <div class="chat-header">
+                <button onclick="closeChat()" class="btn-back">←</button>
+                <h3 id="chat-user-name"></h3>
+            </div>
+            <div id="chat-messages" class="chat-messages"></div>
+            <div class="chat-input">
+                <input type="text" id="message-input" placeholder="メッセージを入力...">
+                <button onclick="sendMessage()" class="btn-send">送信</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="mock-data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
